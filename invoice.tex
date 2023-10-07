@@ -25,12 +25,16 @@
 \begin{document}   
     \begin{center}
         % \rowcolors{2}{}{black!5}
-        \begin{spreadtab}{{tabularx}{\linewidth}{X|X|X}}
-            @ Trip ID     & @ Type & @ Amount \\\hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\\hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\\hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\\hline
-            \multicolumn{3}{r}{\textbf{Total}: :={sum(c2:c5)}}
-        \end{spreadtab}
+        \begin{spreadtab}{{tblr}{
+            width = 1.0\linewidth,
+            colspec={|X|X|X|},
+            row{1}={blue9},
+        }}
+            \hline
+            @ Trip ID     & @ Type & @ Amount   \\ \hline
+            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
+            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
+            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
+            \end{spreadtab}
     \end{center}
 \end{document}
