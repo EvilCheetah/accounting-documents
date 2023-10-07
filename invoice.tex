@@ -1,13 +1,36 @@
 \documentclass{report}
 
-\usepackage{geometry}
+% Encoding Related Imports
 \usepackage[utf8]{inputenc}
 
+% Table Related Imports
+\usepackage{spreadtab}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{tabularray}
+
+% Document Format Related Imports
+\usepackage{geometry}
+
+% add(): double line
+\newcommand{\dline}{\hline\hline}
+
+\UseTblrLibrary{siunitx}
+% Document Definitions
 \geometry{
     margin={0.5in, 1in}
 }
 
 
-\begin{document}
-    
+\begin{document}   
+    \begin{center}
+        % \rowcolors{2}{}{black!5}
+        \begin{spreadtab}{{tabularx}{\linewidth}{X|X|X}}
+            @ Trip ID     & @ Type & @ Amount \\\hline
+            @ B-RVGVX9KHG & @ Trip & 1779.08  \\\hline
+            @ B-D7B8TQP8M & @ Trip & 1800.36  \\\hline
+            @ B-B2SPK0MMP & @ Trip & 819.09   \\\hline
+            \multicolumn{3}{r}{\textbf{Total}: :={sum(c2:c5)}}
+        \end{spreadtab}
+    \end{center}
 \end{document}
