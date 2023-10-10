@@ -4,19 +4,23 @@
 \usepackage[utf8]{inputenc}
 
 % Table Related Imports
+\usepackage{siunitx}
 \usepackage{spreadtab}
 \usepackage{tabularx}
 \usepackage[table]{xcolor}
 \usepackage{tabularray}
+\usepackage[group-separator={,}]{siunitx}
 
 % Document Format Related Imports
 \usepackage{geometry}
 
-% add(): double line
+% Custom Commands
 \newcommand{\dline}{\hline\hline}
 
+% tabularray Configuration 
 \UseTblrLibrary{siunitx}
-% Document Definitions
+
+% Document Configuration
 \geometry{
     margin={0.5in, 1in}
 }
@@ -26,15 +30,26 @@
     \begin{center}
         % \rowcolors{2}{}{black!5}
         \begin{spreadtab}{{tblr}{
-            width = 1.0\linewidth,
-            colspec={|X|X|X|},
+            width = 1.0\textwidth,
+            colspec={
+                | X[6]
+                | X
+                | >{\$}S[
+                    round-mode             = places,
+                    round-precision        = 2,
+                    table-format           = 5.3,
+                    table-number-alignment = right,
+                    group-separator        = {,},
+                    table-space-text-pre   = \$
+                ] |},
             row{1}={blue9},
         }}
             \hline
-            @ Trip ID     & @ Type & @ Amount   \\ \hline
+            @ Trip ID     & @ Type & @ Amount \\ \hline
             @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
             @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
+            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
             @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            \end{spreadtab}
+        \end{spreadtab}
     \end{center}
 \end{document}
