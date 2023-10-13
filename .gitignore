@@ -406,3 +406,7 @@ dist
 *.fls
 *.pdf
 *.synctex.gz
+
+# Python Environment
+venv/
+__pycache__/
