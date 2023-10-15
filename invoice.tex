@@ -9,7 +9,7 @@
 \usepackage{tabularx}
 \usepackage[table]{xcolor}
 \usepackage{tabularray}
-\usepackage[group-separator={,}]{siunitx}
+\usepackage{siunitx}
 
 % Document Format Related Imports
 \usepackage{geometry}
@@ -19,14 +19,20 @@
 
 % Custom Commands
 \newcommand{\dline}{\hline\hline}
-\newcommand{\config}{
-    round-mode             = places,
-    round-precision        = 2,
-    table-format           = 5.3,
-    table-number-alignment = right,
-    group-separator        = {,},
-    table-space-text-pre   = \$
-}
+\NewColumnType{A}{Q[
+    co = 1,
+    si = {
+        round-mode             = places,
+        round-precision        = 2,
+        table-format           = 7.2,
+        table-space-text-pre   = \$,
+        group-digits           = integer,
+        group-minimum-digits   = 4,
+        group-separator        = {,},
+        table-number-alignment = left,
+    },
+    r
+]}
 
 % Document Configuration
 \geometry{
@@ -40,94 +46,45 @@
         \begin{spreadtab}{{longtblr}{
             width = 1.0\textwidth,
             rowhead = 1,
+            hlines, vlines,
             row{odd}  = {gray!20},
             row{even} = {white},
-            row{1}={blue9},
-            colspec={
-                | X[6]
-                | X
-                | >{\$}Q[
-                    si={
-                        round-mode             = places,
-                        round-precision        = 2,
-                        table-format           = 5.1,
-                        table-number-alignment = right,
-                        group-separator        = {,},
-                        table-space-text-pre   = \$
-                    }, 2] 
-            |}
+            row{1}={guard, blue9, font=\LARGE\sffamily},
+            column{1,2} = {guard},
+            colspec={X[2] X A}
         }}
-            \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
-            @ Trip ID     & @ Type & @ Amount \\ \hline
-            @ B-RVGVX9KHG & @ Trip & 1779.08  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 1800.36  \\ \hline
-            @ B-D7B8TQP8M & @ Trip & 900      \\ \hline
-            @ B-B2SPK0MMP & @ Trip & 819.09   \\ \hline
+            @ \SetCell{l} Trip ID & @ \SetCell{l} Type & @ \SetCell{r} Amount  \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-B2SPK0MMP & @ Trip & \$ :={819.09}    \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-B2SPK0MMP & @ Trip & \$ :={819.09}    \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
+            @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
+            @ B-B2SPK0MMP & @ Trip & \$ :={819.09}    \\ \hline
+            @ \SetCell[c=2]{r} \textbf{Total}: &        & \$ :={sum(c2:[0,-1])}
         \end{spreadtab}
     \end{center}
 \end{document}
