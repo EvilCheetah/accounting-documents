@@ -7,9 +7,11 @@
 \usepackage{siunitx}
 \usepackage{spreadtab}
 \usepackage{tabularx}
-\usepackage[table]{xcolor}
+\usepackage[table,dvipsnames]{xcolor}
 \usepackage{tabularray}
 \usepackage{siunitx}
+
+\usepackage{roboto-mono}
 
 % Document Format Related Imports
 \usepackage{geometry}
@@ -19,31 +21,35 @@
 
 % Custom Commands
 \newcommand{\dline}{\hline\hline}
+
 \NewColumnType{A}{Q[
-    co = 1,
     si = {
         round-mode             = places,
         round-precision        = 2,
-        table-format           = 7.2,
+        table-format           = -10.2,
         table-space-text-pre   = \$,
         group-digits           = integer,
         group-minimum-digits   = 4,
         group-separator        = {,},
-        table-number-alignment = left,
     },
     r
 ]}
 
 % Document Configuration
 \geometry{
-    margin={0.5in, 1in}
+    margin={0.5in, 0.5in}
 }
 
 
-\begin{document}   
+\begin{document}
+    \noindent
+    {\color{RubineRed} \rule{\linewidth}{2mm}}
+    {\noindent \huge Transactions}
     \begin{center}
         % \rowcolors{2}{}{black!5}
-        \begin{spreadtab}{{longtblr}{
+        \begin{spreadtab}{{longtblr}[
+            label   = none,
+        ]{
             width = 1.0\textwidth,
             rowhead = 1,
             hlines, vlines,
@@ -54,7 +60,7 @@
             colspec={X[2] X A}
         }}
             @ \SetCell{l} Trip ID & @ \SetCell{l} Type & @ \SetCell{r} Amount  \\
-            @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
+            @ B-RVGVX9KHG & @ Trip & \$ :={17799999999.08}   \\
             @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
             @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
             @ B-RVGVX9KHG & @ Trip & \$ :={1779.08}   \\
@@ -84,7 +90,11 @@
             @ B-D7B8TQP8M & @ Trip & \$ :={1800.36}   \\
             @ B-D7B8TQP8M & @ Trip & \$ :={900}       \\
             @ B-B2SPK0MMP & @ Trip & \$ :={819.09}    \\ \hline
-            @ \SetCell[c=2]{r} \textbf{Total}: &        & \$ :={sum(c2:[0,-1])}
+            @ \SetCell[c=2]{r} \textbf{Total}: &        & \$ :={sum(c2:[0,-1]) tag(baz)}
         \end{spreadtab}
+        \STmakegtag{baz}
     \end{center}
+
+    \STtag{baz}
+
 \end{document}
